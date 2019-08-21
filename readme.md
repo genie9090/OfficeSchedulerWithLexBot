@@ -46,8 +46,6 @@ https://s3.amazonaws.com/eawhite-syd-summit2019/Appointment_scheduler1.yaml<br>
 1. Input some phrases that will trigger this intent, eg.
 ![Twilio dashboard](images/sample_utterances.png)<br>
 
-
-
 1. Note that "time" and "date" slots are part of amazons default slot types. There is one slot type we are using that is not an Amazon default slot type ie "doctor".
 ![Twilio dashboard](images/slots.png)<br>
 Before you create all the slot types you will need to create this slot type by hitting "+" next to "Slot types".<br>
