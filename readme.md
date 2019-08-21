@@ -22,21 +22,8 @@ Note some of the app is built by CloudFormation and some is build by you:
 ![Find the services](images/cfn_console.png)
 
 1. Click Create Stack. On the next page select radio button "Specify an Amazon S3 template URL". In the textbox input:
-https://s3.amazonaws.com/eawhite-syd-summit2019/Appointment_scheduler.yaml<br>
+https://s3.amazonaws.com/eawhite-syd-summit2019/Appointment_scheduler1.yaml<br>
 ![CFN selection](images/cfn_console2.png)<br>
-
-1. You will notice the CloudFormation template needs 3 parameters to launch (and a stack name). To get these parameters you will need to open up a trial Twilio account.
-![CFN stack](images/cfn_stack_params.png)<br>
-
-1. Open a new browser tab and navigate to twilio.com. Open a free trial account and you should reach this dashboard. You will need to supply your mobile number to verify the account.
-![Twilio dashboard](images/twilio_dashboard.png)<br>
-
-1. The first 2 CloudFormation parameters are the "Account SID" and the "Auth Token", you can copy and paste them into your cloudformation paramters. The next parameter you need input is the source number that Twilio will use, to get this you will need to purchase a number using your Twilio Trial account balance. On the left hand dashboard hit "Phone Numbers".
-![Twilio dashboard](images/numbers_param.png)<br>
-
-1. You will need to purchase a number that has SMS capabilities, check the SMS check box and purchase any number.
-![Twilio dashboard](images/number_purchase.png)<br>
-This phone number is the final parameter that CloudFormation needs, input that full phone number (including the +61) into your CloudFormation parameter.
 
 1. Check that your CloudFormation stack built out successfully. You should see CREATE_COMPLETE in the Status column of your stacks.
 ![Twilio dashboard](images/cfn_sucess.png)<br>
@@ -97,18 +84,24 @@ You will need to give the published version an alias, and select "Publish".
 ![Twilio dashboard](images/twilio_settings.png)<br>
 Fill in the settings and hit "Activate".
 
-1. You will then be given a "Callback URL", copy the URL and go back to your Twilio account.
+  The Account SID and Authentication code come from our pre-created Twilio Account. Go to https://www.twilio.com and login with email "eawhite@amazon.com" and Password: "AWSTestAccount". Once logged in, expand out the "Project Info" field and you will see the "Account SID" and "Authentication Token" to copy over.
+![Twilio dashboard](images/twilio_tokens.png)<br>
 
-1. Navigate to your phone number
-![Twilio dashboard](images/twilio_phone_no.png)<br>
+1. Lex will then give you a "Callback URL", copy the URL and go back to the Twilio account.
 
-1. Select your trial phone number
+1. Navigate to phone numbers and select a phone number.
 ![Twilio dashboard](images/twilio_trial_no.png)<br>
 
-1. In the "Messaging" section, paste your Lex Callback URL into the "Webhook" URL.
+1. Check this number is not in use by another attendee by checking the "Events log", if there has been no activity on the number for 15 minutes, it is good to use! If unsure double check with one of the facilitators, we can purchase a new number if necessary.
+![Twilio dashboard](images/twilio_number_logs.png)<br>
+
+1. Back under the "Configure" tab, in the "Messaging" section, paste your Lex Callback URL into the "Webhook" URL.
 ![Twilio dashboard](images/call_back_paste.png)<br>
 
-1. To test your app end-to-end you will need to put an entry into DynamoDB that is exactly 100 days old and "Test" the Lambda function AppointmentChecker. This is because the AppointmentChecker function checks for any appointments 100 days old to contact them. To find the date 100 days ago, go to lambda in the console and look for a function that starts with "{Cloudformation stack name}-100DayChecker-" and "Test" the function.<br>
+1. You will also need to verify your mobile number in Twilio so Twilio can send you SMS messages. This is under "Verified Caller IDs". Add your number here and follow the SMS verification step.
+![Twilio dashboard](images/verify_number.png)<br>
+
+1. Your app is now complete. To test your app end-to-end you will need to put an entry into DynamoDB that is exactly 100 days old and "Test" the Lambda function "AppointmentChecker". This is because the AppointmentChecker function checks for any appointments 100 days old to contact them. To find the date 100 days ago, go to lambda in the console and look for a function that starts with "{Cloudformation stack name}-100DayChecker-" and "Test" the function.<br>
 ![Twilio dashboard](images/lambda_test.png)<br>
 
 1. You will need to name the test something.
