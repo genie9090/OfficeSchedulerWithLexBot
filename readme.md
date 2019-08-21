@@ -81,8 +81,7 @@ You will need to give the published version an alias, and select "Publish".
 1. You will now need to connect Lex to Twilio, in the Lex console select the tab "Channels", and select "Twilio SMS".
 ![Twilio dashboard](images/twilio_settings.png)<br>
 Fill in the settings and hit "Activate".
-
-  The Account SID and Authentication code come from our pre-created Twilio Account. Go to https://www.twilio.com and login with email "eawhite@amazon.com" and Password: "AWSTestAccount". Once logged in, expand out the "Project Info" field and you will see the "Account SID" and "Authentication Token" to copy over.
+The Account SID and Authentication code come from our pre-created Twilio Account. Go to https://www.twilio.com and login with email "eawhite@amazon.com" and Password: "AWSTestAccount". Once logged in, expand out the "Project Info" field and you will see the "Account SID" and "Authentication Token" to copy over.
 ![Twilio dashboard](images/twilio_tokens.png)<br>
 
 1. Lex will then give you a "Callback URL", copy the URL and go back to the Twilio account.
