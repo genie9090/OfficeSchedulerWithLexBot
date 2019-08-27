@@ -18,12 +18,10 @@ Note some of the app is built by CloudFormation and some is build by you:
 
 ## Instructions
 1. Login to AWS console with the credentials provided for you.<br>
-1. Navigate to the Cloudformation section of the console, by typing Cloudformation in “Find Services"<br>
-![Find the services](images/cfn_console.png)
 
-1. Click Create Stack. On the next page select radio button "Specify an Amazon S3 template URL". In the textbox input:
-https://s3.amazonaws.com/eawhite-syd-summit2019/Appointment_scheduler1.yaml<br>
-![CFN selection](images/cfn_console2.png)<br>
+1. Navigate to "https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=Twilio-Lex-Appointment-booker-YourNameHere&templateURL=https://s3.amazonaws.com/eawhite-syd-summit2019/Appointment_scheduler1.yaml"<br>
+
+1.  You will see all Cloudformation parameters have default values that you can setup the environment with. Note the "Stack name" has a reference to "YourNameHere" where you can input your own name. 
 
 1. Check that your CloudFormation stack built out successfully. You should see CREATE_COMPLETE in the Status column of your stacks.
 ![Twilio dashboard](images/cfn_sucess.png)<br>
